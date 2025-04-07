@@ -4,12 +4,13 @@ import Iterator.*;
 import Mediator.*;
 import Memento.*;
 import Observer.*;
-import State.Activity;
-import State.Reading;
-import State.Worker;
+import Startegy.*;
+import Startegy.Eating;
+import State.*;
+import Template.*;
+import Visitor.*;
 
-import java.awt.*;
-import java.util.List;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
@@ -25,6 +26,9 @@ public class Main {
                 System.out.println("5. Memento");
                 System.out.println("6. Observer");
                 System.out.println("7. State");
+                System.out.println("8. Strategy");
+                System.out.println("9. Template");
+                System.out.println("10. Visitor");
                 System.out.println("0. Exit");
                 String option = in.nextLine();
                 switch(option) {
@@ -109,6 +113,38 @@ public class Main {
                             worker.Operation();
                             worker.changeActivity();
                         }
+                        break;
+                    case "Strategy":
+                        Cook cook = new Cook();
+
+                        cook.setActivity(new sleeping());
+                        cook.execute();
+
+                        cook.setActivity(new Eating());
+                        cook.execute();
+
+                        cook.setActivity(new findNewReceipt());
+                        cook.execute();
+
+                        cook.setActivity(new cooking());
+                        cook.execute();
+                        break;
+                    case "Template" :
+                        WebSiteTemplate welcome =new WelcomePage();
+                        WebSiteTemplate newsPage = new NewsPage();
+                        welcome.showPage();
+                        newsPage.showPage();
+                        break;
+                    case "Visitor":
+                        Projectttt projectttt = new Projectttt();
+                        Developer junior = new JuniorDev();
+                        Developer senior = new SeniorDev();
+
+                        System.out.println("Junior in action");
+                        projectttt.beWritten(junior);
+
+                        System.out.println("Senior in action");
+                        projectttt.beWritten(senior);
                         break;
                     case "Exit":
                         running = false;
