@@ -6,6 +6,8 @@ import Mediator.MediatorUser;
 import Mediator.SimpleText;
 import Mediator.User;
 import Mediator.UserAdmin;
+import Memento.GitHub;
+import Memento.Project;
 
 import java.awt.*;
 import java.util.List;
@@ -21,6 +23,7 @@ public class Main {
                 System.out.println("2. Command");
                 System.out.println("3. Iterator");
                 System.out.println("4. Mediator");
+                System.out.println("5. Memento");
                 System.out.println("0. Exit");
                 String option = in.nextLine();
                 switch(option) {
@@ -69,6 +72,21 @@ public class Main {
                         chat.setUsers(user);
                         chat.setUsers(user1);
                         user1.sendMessage("Hello World");
+                        break;
+                    case "Memento":
+                        Project proj = new Project();
+                        GitHub git = new GitHub();
+                        System.out.println("New project");
+                        proj.setVersionDate("Something name");
+                        System.out.println(proj);
+                        System.out.println("Save to git");
+                        git.setSave(proj.save());
+                        System.out.println("Update proj");
+                        proj.setVersionDate("New version");
+                        System.out.println(proj);
+                        System.out.println("Back to old version");
+                        proj.load(git.getSave());
+                        System.out.println(proj);
                         break;
                     case "Exit":
                         running = false;
