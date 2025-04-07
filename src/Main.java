@@ -2,7 +2,13 @@ import Chain.*;
 import Command_pattern.*;
 import Iterator.Iterator;
 import Iterator.JavaDev;
+import Mediator.MediatorUser;
+import Mediator.SimpleText;
+import Mediator.User;
+import Mediator.UserAdmin;
 
+import java.awt.*;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -14,6 +20,7 @@ public class Main {
                 System.out.println("1. Chain");
                 System.out.println("2. Command");
                 System.out.println("3. Iterator");
+                System.out.println("4. Mediator");
                 System.out.println("0. Exit");
                 String option = in.nextLine();
                 switch(option) {
@@ -52,6 +59,16 @@ public class Main {
                         while(iterator.hasNext()) {
                             System.out.println(iterator.next().toString()+ " ");
                         }
+                        break;
+                    case"Mediator":
+                        SimpleText chat = new SimpleText();
+                        MediatorUser admin = new UserAdmin(chat,"Admin");
+                        MediatorUser user = new User("User", chat);
+                        MediatorUser user1 = new User("User1", chat);
+                        chat.setAdmin(admin);
+                        chat.setUsers(user);
+                        chat.setUsers(user1);
+                        user1.sendMessage("Hello World");
                         break;
                     case "Exit":
                         running = false;
