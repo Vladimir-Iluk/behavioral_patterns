@@ -1,13 +1,9 @@
 import Chain.*;
 import Command_pattern.*;
-import Iterator.Iterator;
-import Iterator.JavaDev;
-import Mediator.MediatorUser;
-import Mediator.SimpleText;
-import Mediator.User;
-import Mediator.UserAdmin;
-import Memento.GitHub;
-import Memento.Project;
+import Iterator.*;
+import Mediator.*;
+import Memento.*;
+import Observer.*;
 
 import java.awt.*;
 import java.util.List;
@@ -24,6 +20,7 @@ public class Main {
                 System.out.println("3. Iterator");
                 System.out.println("4. Mediator");
                 System.out.println("5. Memento");
+                System.out.println("6. Observer");
                 System.out.println("0. Exit");
                 String option = in.nextLine();
                 switch(option) {
@@ -87,6 +84,18 @@ public class Main {
                         System.out.println("Back to old version");
                         proj.load(git.getSave());
                         System.out.println(proj);
+                        break;
+                    case "Observer":
+                        JobsSite site = new JobsSite();
+                        site.addVacncies("first vacancy");
+                        site.addVacncies("second vacancy");
+                        Observer firstObs = new Subs("First finder");
+                        Observer secondObs = new Subs("Second finder");
+                        site.addObserver(firstObs);
+
+                        site.addObserver(secondObs);
+                        site.addVacncies("third vacancy");
+                        site.removeVacancy("first vacancy");
                         break;
                     case "Exit":
                         running = false;
