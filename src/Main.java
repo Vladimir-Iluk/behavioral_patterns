@@ -4,6 +4,9 @@ import Iterator.*;
 import Mediator.*;
 import Memento.*;
 import Observer.*;
+import State.Activity;
+import State.Reading;
+import State.Worker;
 
 import java.awt.*;
 import java.util.List;
@@ -21,6 +24,7 @@ public class Main {
                 System.out.println("4. Mediator");
                 System.out.println("5. Memento");
                 System.out.println("6. Observer");
+                System.out.println("7. State");
                 System.out.println("0. Exit");
                 String option = in.nextLine();
                 switch(option) {
@@ -96,6 +100,15 @@ public class Main {
                         site.addObserver(secondObs);
                         site.addVacncies("third vacancy");
                         site.removeVacancy("first vacancy");
+                        break;
+                    case "State":
+                        Activity activity = new Reading();
+                        Worker worker = new Worker();
+                        worker.setActivity(activity);
+                        for(int i=0;i<10;i++){
+                            worker.Operation();
+                            worker.changeActivity();
+                        }
                         break;
                     case "Exit":
                         running = false;
