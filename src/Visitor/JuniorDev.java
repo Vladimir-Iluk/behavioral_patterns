@@ -4,7 +4,7 @@ public class JuniorDev implements Developer {
 
     @Override
     public void create(ProjectClass projectClass) {
-        System.out.println("Writting junovski class");
+        System.out.println("Writting bad class");
     }
 
     @Override
@@ -14,6 +14,6 @@ public class JuniorDev implements Developer {
 
     @Override
     public void create(Test test) {
-        System.out.println("Write junovski test");
+        System.out.println("Write bad test");
     }
 }
